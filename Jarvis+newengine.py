@@ -83,13 +83,19 @@ if __name__ == '__main__':
             speak('Who is the sender? ')
             sender = myCommand()
 
-            if 'I am' in sender:
+            if 'I am' in sender or 'harsh' in sender:
                 try:
                     speak("Please Enter Email address of Recipient.")
                     Recipient_user = input("User: ")
-                    speak('What should I say? ')
-                    content = myCommand()
-
+                    
+                    
+                    speak('What is the subject? ')
+                    subject = myCommand()
+                    
+                    speak('What is the message?')
+                    msg = myCommand()
+                    
+                    content = 'Subject: {}\n\n{}'.format(subject, msg)
                     server = smtplib.SMTP('smtp.gmail.com', 587)
                     server.ehlo()
                     server.starttls()
